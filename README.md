@@ -7,6 +7,20 @@ Install the LangChain CLI if you haven't yet
 pip install -U langchain-cli
 ```
 
+## Test
+```
+ 'http://localhost:8000/chain/stream' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "input": {
+    "title": "la vida es bella"
+  },
+  "config": {},
+  "kwargs": {}
+}'
+```
+
 ## Adding packages
 
 ```bash
