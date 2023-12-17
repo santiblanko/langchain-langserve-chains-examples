@@ -36,7 +36,6 @@ synopsis_prompt = PromptTemplate.from_template(
 """
 )
 
-
 review_prompt = PromptTemplate.from_template(
     """
         You are a play critic from the New York Times. Given the synopsis of play, it is your job to write a review for that play.
@@ -47,15 +46,13 @@ review_prompt = PromptTemplate.from_template(
 )
 
 translate_prompt = PromptTemplate.from_template(
-    """ devuelve el objeto json con history (ingles), synopsis (ingles) y translate (español).
+    """ devuelve el objeto json con history (ingles), synopsis_review (ingles) y translate (traducelo al español).
         {synopsis}
-
     """
 )
 
 review_chain = LLMChain(llm=llm, prompt=review_prompt)
 translate_chain = LLMChain(llm=llm, prompt=translate_prompt)
-json_parser = SimpleJsonOutputParser()
 
 overall_chain = SimpleSequentialChain(
     chains=[review_chain, translate_chain],
