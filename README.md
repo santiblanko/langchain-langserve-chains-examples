@@ -1,4 +1,3 @@
-# soluntech-langserve
 
 ## Installation
 
