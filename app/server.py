@@ -10,6 +10,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SimpleSequentialChain
 from langchain.llms import OpenAI
+from langchain.callbacks import LLMonitorCallbackHandler
 
 load_dotenv()
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
@@ -26,8 +27,11 @@ add_routes(
     path="/openai",
 )
 
-# Create the OpenAI model
-llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY,model_name='gpt-3.5-turbo', temperature=1)
+handler = LLMonitorCallbackHandler(app_id="129bf090-1da0-4c96-ad17-1e259d875c49")
+
+# Create
+# the OpenAI model
+llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY,model_name='gpt-3.5-turbo', temperature=1, callbacks=[handler])
 #model = OpenAI(temperature=0.7, openai_api_key=OPENAI_API_KEY)
 
 synopsis_prompt = PromptTemplate.from_template(
@@ -68,4 +72,4 @@ add_routes(
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="localhost", port=8000)
+    uvicorn.run(app, host="localhost", port=8080)

@@ -11,9 +11,10 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.11"
 uvicorn = "^0.23.2"
+openai = "1.6.0"
 langserve = {extras = ["server"], version = ">=0.0.30"}
 pydantic = "<2"
-
+python-dotenv = "0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 langchain-cli = ">=0.0.15"
